@@ -1,0 +1,121 @@
+<html lang = "pt-br">
+<head>
+	<title>Conversor de escala</title>
+<style type="text/css">
+	body{
+		background-color: #C70039;
+		text-align: center;
+		color : black;
+		max-width: 100%;
+		max-height: 100%;
+		font-size: 200%;
+	}
+	h1{
+		font-size: 400%;
+		font-family: Helvetica;
+
+	}	
+	button{
+		background-color: black;
+		font-family: arial;
+		font-size: 14px;
+		text-transform: uppercase;
+		font-weight: 700;
+		border: none;
+		padding: 12px
+		cursor: pointer;
+		text-align: center;
+		color: white;
+		cursor: pointer;
+		box-shadow:0 5px 0 #900C3F;		
+	}
+	button:hover{
+		background-color: #581845;
+		font-family: arial;
+		font-size: 14px;
+		text-transform: uppercase;
+		font-weight: 700;
+		border: none;
+		padding: 12px
+		cursor: pointer;
+		text-align: center;
+		color: white;
+		cursor: pointer;
+		box-shadow:0 5px 0 #900C3F;
+		position: relative;
+		top: 5px;	
+	}
+	#bloco{
+		background-color: #FFC300;
+		width:90%;
+		height: 90%;
+		margin: auto;
+		color: black;
+	}
+	table{
+		margin: 0 auto;
+		color: white;
+	td{
+		text-align: center;
+		font-size:100%;
+	}
+	p{
+		text-align: center;
+		font-size: 200%;
+	}
+
+
+</style>
+</head>
+<body>
+	<div id="bloco">
+		<h1>CONVERSOR</h1>
+		<p><b>Conversor de escalas</b></p>
+	
+		<table>
+			<tr>
+				<td>Celsius</td>
+				<td><input type="number" id="celsius"></td>
+			</tr>
+			<tr>
+				<td>Fahrenheit</td>
+				<td><input type="number" id="fahrenheit"></td>
+			</tr>
+			<tr>
+				<td>Kelvin</td>
+				<td><input type="number" id="kelvin"></td>
+			</tr>
+		</table>
+
+		<button id="converter">Converter</button>
+		<button id="limpar">Limpar</button>
+	</div>
+			<script type="text/javascript">
+				var botao = document.getElementById('converter');
+
+				botao.onclick = function(){
+
+					var fahrenheit = document.getElementById('fahrenheit').value;
+					var celsius = document.getElementById('celsius').value;
+					var kelvin = document.getElementById('kelvin').value;
+					if(celsius !=="" && kelvin=="" && fahrenheit==""){
+						document.getElementById('fahrenheit').value = (1.8*parseFloat(celsius)+32).toFixed(2);
+						document.getElementById('kelvin').value = (parseFloat(celsius)+273.15).toFixed(2);			
+					}else if (fahrenheit !== ""&& kelvin=="" && celsius){ 
+						document.getElementById('celsius').value = ((parseFloat(fahrenheit)-32)/1.8).toFixed(2);
+						document.getElementById('kelvin').value = ((parseFloat(fahrenheit)-32)*(5/9)+273.15).toFixed(2);
+				}else if(kelvin!=="" && fahrenheit=="" && celsius==""){
+					document.getElementByID('celsius').value = (parseFloat(kelvin) - 273.15).toFixed(2);
+					document.getElementById('fahrenheit').value = ((parseFloat(kelvin)-273.15)*(9/5)+32).toFixed(2);
+					 }
+				}
+					var limpar = document.getElementById('limpar');
+					limpar.onclick = function(){
+						document.getElementById('fahrenheit').value="";
+						document.getElementById('kelvin').value="";
+						document.getElementById('celsius').value ="";
+					}	
+			
+			</script>
+</body>
+</html>
